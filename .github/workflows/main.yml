@@ -33,3 +33,11 @@ jobs:
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Upload APK to Google Drive
+        uses: gayanvoice/google-drive-upload-github-action@v1.0.10
+        with:
+          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
+          filename: build/app/outputs/flutter-apk/app-release.apk
+          folder: 115564190328920672404
+          name: myapp-${{ github.run_number }}.apk
